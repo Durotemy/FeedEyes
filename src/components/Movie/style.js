@@ -1,7 +1,6 @@
 import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
-
   movie: {
     padding: '10px',
   },
@@ -14,7 +13,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
     },
     '&:hover': {
-      cursor: 'pointer',
+      // cursor: 'pointer',
     },
   },
   image: {
