@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import { Box, CircularProgress, useMediaQuery, Typography } from '@mui/material';
+// import { useSelector } from 'react-redux';
+import { useGetMoviesQuery } from '../../services/TMDB';
 
 const Movies = () => {
-  // eslint-disable-next-line no-console
-  console.log('hha');
+  // const selector = useSelector();
+  const { data } = useGetMoviesQuery();
+
+  console.log('data', data);
+
   return (
-    <div>Movies</div>
+    <div>
+      Movie
+    </div>
+
   );
 };
 
