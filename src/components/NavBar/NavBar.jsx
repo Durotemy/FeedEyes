@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import useStyle from './styles';
 import { Sidebar } from '..';
-// import avatar from "image.png"
+
 const NavBar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const style = useStyle();
@@ -35,9 +35,8 @@ const NavBar = () => {
           >
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
-
           <div>
-            {!isAuthenticated ? (<Button color="inherit" onClick={() => ('')}>Login &nsbp; <AccountCircle /> </Button>)
+            {!isAuthenticated ? (<Button color="inherit" onClick={() => ('')}>Login &nbsp; <AccountCircle /> </Button>)
               : (
                 <Button
                   color="inherit"

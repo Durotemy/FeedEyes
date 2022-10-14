@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
   toolbar: {
     height: '80px',
     display: 'flex',
-    // flexDirection: 'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     marginLeft: '240px',
     [theme.breakpoints.down('sm')]: {
