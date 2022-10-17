@@ -13,7 +13,7 @@ export default makeStyles((theme) => ({
       flexDirection: 'column',
     },
     '&:hover': {
-      // cursor: 'pointer',
+      cursor: 'pointer',
     },
   },
   image: {

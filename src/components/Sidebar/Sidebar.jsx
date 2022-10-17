@@ -18,12 +18,14 @@ const categories = [
 
 const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
 const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+
 const Sidebar = () => {
+  // const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
-  // const selector = useSelector();
   const classes = useStyles();
   const theme = useTheme();
+
   return (
     <>
       <Link to="/" className={ClassNames.imageLink}>
