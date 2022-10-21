@@ -17,8 +17,6 @@ const Search = () => {
       dispatch(searchMovie(query));
     }
   };
-
-  console.log('search');
   return (
     <div className={classes.searchContainer}>
       <TextField

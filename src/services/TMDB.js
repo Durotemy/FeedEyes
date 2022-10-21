@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const tmdbApi = createApi({
@@ -23,12 +24,37 @@ export const tmdbApi = createApi({
         return `movie/popular?page=${page}&api_key=3560ed25b99d8da9bc6175fa41d9fd28`;
       },
     }),
+    getMovie: builder.query({
+      query: (id) => `/movie/${id}?append_to_response=videos,credits&api_key=3560ed25b99d8da9bc6175fa41d9fd28`,
+    }),
+
+    //* Get User Specific Lists
+    getList: builder.query({
+      query: ({ listName, accountId, sessionId, page }) => `/account/${accountId}/${listName}?api_key=3560ed25b99d8da9bc6175fa41d9fd28&session_id=${sessionId}&page=${page}`,
+    }),
+
+    getRecommendations: builder.query({
+      query: ({ movie_id, list }) => `/movie/${movie_id}/${list}?api_key=3560ed25b99d8da9bc6175fa41d9fd28`,
+    }),
+
+    getActorsDetails: builder.query({
+      query: (id) => `person/${id}?api_key=3560ed25b99d8da9bc6175fa41d9fd28`,
+    }),
+
+    getMoviesByActorId: builder.query({
+      query: ({ id, page }) => `/discover/movie?with_cast=${id}&page=${page}&api_key=3560ed25b99d8da9bc6175fa41d9fd28`,
+    }),
   }),
 });
 
 export const {
   useGetMoviesQuery,
   useGetGenresQuery,
+  useGetMovieQuery,
+  useGetListQuery,
+  useGetRecommendationsQuery,
+  useGetActorsDetailsQuery,
+  useGetMoviesByActorIdQuery,
 } = tmdbApi;
 
 // return `movie/popular?page=${page}&api_key=3560ed25b99d8da9bc6175fa41d9fd28`,

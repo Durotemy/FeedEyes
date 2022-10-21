@@ -1,17 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
 import useStyle from './styles';
 import { Sidebar, Search } from '..';
+import { setUser, userSelector } from '../../features/auth';
+import { fetchToken, moviesApi, createSessionId } from '../../utils/index';
 
 const NavBar = () => {
+  const { isAuthenticated, user } = useSelector(userSelector);
+  const dispatch = useDispatch();
   const [mobileOpen, setMobileOpen] = useState(false);
   const style = useStyle();
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:600px)');
-  const isAuthenticated = 'true';
+  // const isAuthenticated = false;
+
+  const token = localStorage.getItem('request_token');
+  const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+
+  useEffect(() => {
+    const logInUser = async () => {
+      if (token) {
+        if (localStorage.getItem('session_id')) {
+          const { data: userData } = await moviesApi.get(`account?session_id=${sessionIdFromLocalStorage}`);
+          dispatch(setUser(userData));
+        } else {
+          const sessionId = await createSessionId();
+          const { data: userData } = await moviesApi.get(`account?session_id=${sessionId}`);
+          dispatch(setUser(userData));
+        }
+      }
+    };
+    logInUser();
+  }, []);
 
   return (
     <>
@@ -37,13 +61,13 @@ const NavBar = () => {
           </IconButton>
           {!isMobile && <Search />}
           <div>
-            {!isAuthenticated ? (<Button color="inherit" onClick={() => ('')}>Login &nbsp; <AccountCircle /> </Button>)
+            {!isAuthenticated ? (<Button color="inherit" onClick={fetchToken}>Login &nbsp; <AccountCircle /> </Button>)
               : (
                 <Button
                   color="inherit"
                   onClick={() => ('')}
                   component={Link}
-                  to="/profile/:id"
+                  to={`/profile/${user.id}`}
                   className={style.linkButton}
                 > {!isMobile && <> My movies &nbsp; </>}<Avatar
                   style={{ width: 30, height: 30 }}
