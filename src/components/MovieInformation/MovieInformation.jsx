@@ -22,7 +22,7 @@ const MovieInformation = () => {
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
   const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
-  const { data: recommendations } = useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
+  const { data: recommendations, isFetching: isRecommendationsFetching } = useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
 
   const [isMovieFavorited, setIsMovieFavorited] = useState(false);
   const [isMovieWatchlisted, setIsMovieWatchlisted] = useState(false);
@@ -36,7 +36,7 @@ const MovieInformation = () => {
   }, [watchlistMovies, data]);
 
   const addToFavorites = async () => {
-    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=3560ed25b99d8da9bc6175fa41d9fd28&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
       favorite: !isMovieFavorited,
@@ -45,10 +45,8 @@ const MovieInformation = () => {
     setIsMovieFavorited((prev) => !prev);
   };
 
-  // console.log({ isMovieWatchlisted });
-
   const addToWatchlist = async () => {
-    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`, {
+    await axios.post(`https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=3560ed25b99d8da9bc6175fa41d9fd28&session_id=${localStorage.getItem('session_id')}`, {
       media_type: 'movie',
       media_id: id,
       watchlist: !isMovieWatchlisted,
@@ -60,6 +58,13 @@ const MovieInformation = () => {
   if (isFetching) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center">
+        <CircularProgress size="8rem" />
+      </Box>
+    );
+  }
+  if (isRecommendationsFetching) {
+    return (
+      <Box display="flex" justifyContent="center">
         <CircularProgress size="8rem" />
       </Box>
     );

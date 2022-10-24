@@ -9,3 +9,4 @@ export { default as NavBar } from './NavBar/NavBar';
 export { default as Movie } from './Movie/Movie';
 export { default as Search } from './Search/Search';
 export { default as RatedCards } from './RatedCards/RatedCards';
+export { default as Pagination } from './Pagination/Pagination';

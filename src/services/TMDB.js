@@ -13,7 +13,6 @@ export const tmdbApi = createApi({
         if (searchQuery) {
           return `/search/movie?query=${searchQuery}&page=${page}&api_key=3560ed25b99d8da9bc6175fa41d9fd28`;
         }
-
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
           return `movie/${genreIdOrCategoryName}?page=${page}&api_key=3560ed25b99d8da9bc6175fa41d9fd28`;
         }

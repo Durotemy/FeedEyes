@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 import { ClassNames } from '@emotion/react';
 import { useDispatch } from 'react-redux';
-import { useGetGenresQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
+import { useGetGenresQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import useStyles from './style';
 
@@ -19,12 +19,15 @@ const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2f
 const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
 
 const Sidebar = () => {
-  // const selector = useSelector();
   // const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
+
+  // useEffect(() => {
+  //   setMobileOpen(false);
+  // }, [genreIdOrCategoryName]);
 
   return (
     <>
