@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,7 @@ import useStyle from './styles';
 import { Sidebar, Search } from '..';
 import { setUser, userSelector } from '../../features/auth';
 import { fetchToken, moviesApi, createSessionId } from '../../utils/index';
+import { ColorModeContext } from '../../utils/ToggleColorMode';
 
 const NavBar = () => {
   const { isAuthenticated, user } = useSelector(userSelector);
@@ -17,6 +18,10 @@ const NavBar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:600px)');
   // const isAuthenticated = false;
+
+  const colorMode = useContext(ColorModeContext);
+
+  console.log('colorMode...', colorMode);
 
   const token = localStorage.getItem('request_token');
   const sessionIdFromLocalStorage = localStorage.getItem('session_id');
@@ -55,7 +60,7 @@ const NavBar = () => {
           <IconButton
             color="inherit"
             sx={{ ml: 1 }}
-            onClick={() => {}}
+            onClick={colorMode.toggleColorMode}
           >
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
@@ -65,7 +70,7 @@ const NavBar = () => {
               : (
                 <Button
                   color="inherit"
-                  onClick={() => ('')}
+                  onClick={() => {}}
                   component={Link}
                   to={`/profile/${user.id}`}
                   className={style.linkButton}

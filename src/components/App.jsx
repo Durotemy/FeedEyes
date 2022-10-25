@@ -19,7 +19,7 @@ const App = () => {
           <div className={classes.toolbar} />
           <Routes>
             <Route path="/" element={<Movies />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
             <Route path="/actors/:id" element={<Actors />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/movie/:id" element={<MovieInformation />} />

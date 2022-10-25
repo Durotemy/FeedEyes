@@ -1,19 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 import store from './app/store';
+import ToggleColorModelProvider from './utils/ToggleColorMode';
 
-const theme = createTheme({});
+// const theme = createTheme({});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
+    <ToggleColorModelProvider>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </ThemeProvider>,
+    </ToggleColorModelProvider>,
   </Provider>,
 );
 
