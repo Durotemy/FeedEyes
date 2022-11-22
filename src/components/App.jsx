@@ -11,7 +11,6 @@ const App = () => {
   const alanBtnContainer = useRef();
   return (
     <div className={classes.root}>
-      {/* <Router> */}
       <CssBaseline />
       <NavBar />
       <main className={classes.content}>
@@ -24,7 +23,6 @@ const App = () => {
           <Route path="/movie/:id" element={<MovieInformation />} />
         </Routes>
       </main>
-      {/* </Router> */}
       <div ref={alanBtnContainer} />
     </div>
   );

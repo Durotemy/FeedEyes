@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import genreIcons from '../../assets/genres';
 import { useGetGenresQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import blueLogo from '../../assets/images/blueLogo.png';
+import redLogo from '../../assets/images/redLogo.png';
 import useStyles from './style';
 
 const categories = [
@@ -15,8 +17,8 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
-const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
-const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+// const redLogo = redLog;
+// const blueLogo = blueLog;
 
 const Sidebar = () => {
   // const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
