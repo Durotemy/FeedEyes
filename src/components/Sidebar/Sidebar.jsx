@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Divider, List, ListItem, ListItemText, ListSubheader, CircularProgress, Box, ListItemIcon } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 import { ClassNames } from '@emotion/react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import genreIcons from '../../assets/genres';
 import { useGetGenresQuery } from '../../services/TMDB';
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
@@ -20,16 +20,16 @@ const categories = [
 // const redLogo = redLog;
 // const blueLogo = blueLog;
 
-const Sidebar = () => {
-  // const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
+const Sidebar = ({ setMobileOpen }) => {
+  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
 
-  // useEffect(() => {
-  //   setMobileOpen(false);
-  // }, [genreIdOrCategoryName]);
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdOrCategoryName]);
 
   return (
     <>
