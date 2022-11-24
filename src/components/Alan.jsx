@@ -8,7 +8,7 @@ import { ColorModeContext } from '../utils/ToggleColorMode';
 import { fetchToken } from '../utils';
 
 const useAlan = () => {
-  console.log('ee', selectGenreOrCategory);
+  // console.log('ee', selectGenreOrCategory);
   const { setMode } = useContext(ColorModeContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();

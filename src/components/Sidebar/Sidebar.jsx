@@ -17,12 +17,10 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
-// const redLogo = redLog;
-// const blueLogo = blueLog;
-
 const Sidebar = ({ setMobileOpen }) => {
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const { data, isFetching } = useGetGenresQuery();
+
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
@@ -30,6 +28,7 @@ const Sidebar = ({ setMobileOpen }) => {
   useEffect(() => {
     setMobileOpen(false);
   }, [genreIdOrCategoryName]);
+  console.log('dd', genreIdOrCategoryName);
 
   return (
     <>

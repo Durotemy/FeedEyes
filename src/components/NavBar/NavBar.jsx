@@ -21,7 +21,7 @@ const NavBar = () => {
 
   const colorMode = useContext(ColorModeContext);
 
-  console.log('colorMode...', colorMode);
+  // console.log('colorMode...', colorMode);
 
   const token = localStorage.getItem('request_token');
   const sessionIdFromLocalStorage = localStorage.getItem('session_id');
