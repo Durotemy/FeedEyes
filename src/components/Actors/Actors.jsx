@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
-
 import useStyles from './style';
 import { useGetActorsDetailsQuery, useGetMoviesByActorIdQuery } from '../../services/TMDB';
 import { Pagination, MovieList } from '..';
@@ -12,7 +11,6 @@ const Actors = () => {
   const navigate = useNavigate();
   const classes = useStyles();
   const [page, setPage] = useState(1);
-
   const { data, isFetching, error } = useGetActorsDetailsQuery(id);
   const { data: movies } = useGetMoviesByActorIdQuery({ id, page });
 

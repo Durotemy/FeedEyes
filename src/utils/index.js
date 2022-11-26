@@ -31,7 +31,7 @@ export const createSessionId = async () => {
       // eslint-disable-next-line camelcase
       return session_id;
     } catch (error) {
-      console.log(error);
+      console.log('sorry your token could not be created');
     }
   }
 };

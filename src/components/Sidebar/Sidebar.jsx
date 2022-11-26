@@ -20,7 +20,6 @@ const categories = [
 const Sidebar = ({ setMobileOpen }) => {
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const { data, isFetching } = useGetGenresQuery();
-
   const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
@@ -70,7 +69,6 @@ const Sidebar = ({ setMobileOpen }) => {
             </ListItem>
           </Link>
         ))}
-
       </List>
     </>
   );

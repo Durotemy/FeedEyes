@@ -2,13 +2,11 @@ import { useEffect, useContext } from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { selectGenreOrCategory, searchMovie } from '../features/currentGenreOrCategory';
 import { ColorModeContext } from '../utils/ToggleColorMode';
 import { fetchToken } from '../utils';
 
 const useAlan = () => {
-  // console.log('ee', selectGenreOrCategory);
   const { setMode } = useContext(ColorModeContext);
   const dispatch = useDispatch();
   const navigate = useNavigate();

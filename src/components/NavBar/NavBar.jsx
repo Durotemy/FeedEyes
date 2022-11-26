@@ -18,7 +18,6 @@ const NavBar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:600px)');
   const colorMode = useContext(ColorModeContext);
-
   const token = localStorage.getItem('request_token');
   const sessionIdFromLocalStorage = localStorage.getItem('session_id');
 

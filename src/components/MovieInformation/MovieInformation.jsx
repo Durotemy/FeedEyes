@@ -18,7 +18,6 @@ const MovieInformation = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: favoriteMovies } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
   const { data: watchlistMovies } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
