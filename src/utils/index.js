@@ -15,7 +15,7 @@ export const fetchToken = async () => {
       window.location.href = `https://www.themoviedb.org/authenticate/${token}?redirect_to=${window.location.origin}/approved`;
     }
   } catch (error) {
-    console.log(error);
+    console.log('sorry your token could not be created');
   }
 };
 // eslint-disable-next-line consistent-return

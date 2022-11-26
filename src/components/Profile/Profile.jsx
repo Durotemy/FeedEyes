@@ -23,7 +23,7 @@ const Profile = () => {
     localStorage.clear();
     window.location.href = '/';
   };
-
+  return (
     <Box>
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h4" gutterBottom>My Profile</Typography>
@@ -39,7 +39,8 @@ const Profile = () => {
             <RatedCards title="Watchlist" data={watchlistMovies} />
           </Box>
         )}
-    </Box>;
+    </Box>
+  );
 };
 
 export default Profile;

@@ -17,11 +17,7 @@ const NavBar = () => {
   const style = useStyle();
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:600px)');
-  // const isAuthenticated = false;
-
   const colorMode = useContext(ColorModeContext);
-
-  // console.log('colorMode...', colorMode);
 
   const token = localStorage.getItem('request_token');
   const sessionIdFromLocalStorage = localStorage.getItem('session_id');
@@ -40,7 +36,7 @@ const NavBar = () => {
       }
     };
     logInUser();
-  }, []);
+  }, [token]);
 
   return (
     <>
